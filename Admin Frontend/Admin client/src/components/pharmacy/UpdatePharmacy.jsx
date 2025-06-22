@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getPharmacies, updatePharmacy } from "../services/pharmacyServices"; // Assuming updatePharmacy exists
+import { getPharmacies, updatePharmacy } from "../../services/pharmacyServices"; // Assuming updatePharmacy exists
 import { FaPhone, FaWhatsapp } from "react-icons/fa";
 
 const UpdatePharmacy = () => {

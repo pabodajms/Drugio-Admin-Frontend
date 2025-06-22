@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getMedicines } from "../services/medicineServices"; // Import your medicine fetching function
+import { deleteMedicine, getMedicines } from "../../services/medicineServices"; // Import your medicine fetching function
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const MedicineDetails = () => {
@@ -19,6 +19,24 @@ const MedicineDetails = () => {
 
     fetchMedicineDetails();
   }, [id]);
+
+  // Handle the delete action
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm(
+      "Do you want to delete this pharmacy?"
+    );
+    if (confirmDelete) {
+      try {
+        // Call delete service to remove the pharmacy
+        await deleteMedicine(id);
+        // Navigate back to the pharmacy list after deletion
+        navigate("/medicines");
+      } catch (error) {
+        console.error("Error deleting medicine:", error);
+        alert("Error deleting medicine.");
+      }
+    }
+  };
 
   if (!medicine) {
     return <p className="text-center">Loading...</p>;
@@ -101,8 +119,16 @@ const MedicineDetails = () => {
           </div>
         </div>
         <div className="mt-4 d-flex justify-content-between">
-          <button className="btn btn-primary">Update</button>
-          <button className="btn btn-danger">Delete</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate(`/medicine/update/${medicine.medicine_Id}`)}
+          >
+            Update
+          </button>
+
+          <button className="btn btn-danger" onClick={handleDelete}>
+            Delete
+          </button>
           <button
             className="btn btn-secondary"
             onClick={() => navigate("/medicines")}

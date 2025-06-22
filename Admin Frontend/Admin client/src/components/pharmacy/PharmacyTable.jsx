@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getPharmacies } from "../services/pharmacyServices";
+import { getPharmacies } from "../../services/pharmacyServices";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 

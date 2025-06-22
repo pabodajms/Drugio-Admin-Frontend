@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addPharmacy } from "../services/pharmacyServices";
+import { addPharmacy } from "../../services/pharmacyServices";
 
 const AddPharmacy = () => {
   const [pharmacy, setPharmacy] = useState({

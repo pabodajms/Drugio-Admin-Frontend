@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMedicines } from "../services/medicineServices";
+import { getMedicines } from "../../services/medicineServices";
 import { useNavigate } from "react-router-dom";
 import AddMedicineForm from "./AddMedicineForm";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,7 +32,7 @@ const MedicineTable = () => {
         <h2 className="m-0">All Medicine</h2>
         <button
           className="btn btn-primary"
-          onClick={() => setShowAddForm(true)}
+          onClick={() => navigate("/medicine/add")}
         >
           + Add
         </button>

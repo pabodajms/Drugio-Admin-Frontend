@@ -6,17 +6,19 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import SignUp from "./components/login and signup/SignUp";
+import Login from "./components/login and signup/Login";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import MedicineTable from "./components/medicineTable";
-import MedicineDetails from "./components/MedicineDetails";
-import PharmacyTable from "./components/PharmacyTable"; // Import PharmacyTable
-import PharmacyDetails from "./components/PharmacyDetails"; // Import PharmacyDetails
-import AddPharmacy from "./components/AddPharmacy";
-import UpdatePharmacy from "./components/UpdatePharmacy";
+import MedicineTable from "./components/medicine/MedicineTable";
+import MedicineDetails from "./components/medicine/MedicineDetails";
+import AddMedicinePage from "./components/medicine/AddMedicinePage";
+import UpdateMedicineForm from "./components/medicine/UpdateMedicineForm";
+import PharmacyTable from "./components/pharmacy/PharmacyTable"; // Import PharmacyTable
+import PharmacyDetails from "./components/pharmacy/PharmacyDetails"; // Import PharmacyDetails
+import AddPharmacy from "./components/pharmacy/AddPharmacy";
+import UpdatePharmacy from "./components/pharmacy/UpdatePharmacy";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Dashboard = () => <div></div>;
@@ -45,8 +47,12 @@ function Layout() {
               path="/medicine/medicinedetails/:id"
               element={<MedicineDetails />}
             />
+            <Route path="/medicine/add" element={<AddMedicinePage />} />
+            <Route
+              path="/medicine/update/:id"
+              element={<UpdateMedicineForm />}
+            />
             <Route path="/pharmacies" element={<PharmacyTable />} />{" "}
-            {/* Updated */}
             <Route
               path="/pharmacy/pharmacydetails/:id"
               element={<PharmacyDetails />}

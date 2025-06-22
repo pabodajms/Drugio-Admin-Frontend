@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth } from "../../config/firebase";
 import { Container, Form, Button, Alert, Card } from "react-bootstrap";
 
 const SignUp = () => {
@@ -17,12 +17,19 @@ const SignUp = () => {
     setSuccess("");
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const token = await userCredential.user.getIdToken();
 
       const response = await fetch("http://localhost:3030/api/admin/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ email, password }),
       });
 
@@ -48,13 +55,25 @@ const SignUp = () => {
         <Form onSubmit={handleSignUp}>
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <Form.Control
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <Form.Control
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </Form.Group>
-          <Button type="submit" className="w-100">Sign Up</Button>
+          <Button type="submit" className="w-100">
+            Sign Up
+          </Button>
         </Form>
         <p className="mt-3 text-center">
           Already have an account? <a href="/login">Login here</a>

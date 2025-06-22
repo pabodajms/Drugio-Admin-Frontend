@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../config/firebase";
+import { auth } from "../../config/firebase";
 import { Container, Form, Button, Alert, Card } from "react-bootstrap";
 
 const Login = () => {
@@ -15,13 +15,20 @@ const Login = () => {
     setError("");
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const token = await userCredential.user.getIdToken();
 
-      const response = await fetch("http://localhost:3030/api/admin/dashboard", {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        "http://localhost:3030/api/admin/dashboard",
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.ok) {
         navigate("/admin-dashboard");
@@ -42,13 +49,25 @@ const Login = () => {
         <Form onSubmit={handleLogin}>
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <Form.Control
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <Form.Control
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </Form.Group>
-          <Button type="submit" className="w-100">Login</Button>
+          <Button type="submit" className="w-100">
+            Login
+          </Button>
         </Form>
         <p className="mt-3 text-center">
           Don't have an account? <a href="/signup">Sign up here</a>
