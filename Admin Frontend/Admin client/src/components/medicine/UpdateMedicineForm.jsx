@@ -103,8 +103,8 @@ const UpdateMedicineForm = () => {
           <input
             type="text"
             className="form-control"
-            name="contact_Number"
-            value={formData.contact_Number || ""}
+            name="distributorContact"
+            value={formData.distributorContact || ""}
             onChange={handleChange}
           />
         </div>
@@ -113,8 +113,8 @@ const UpdateMedicineForm = () => {
           <input
             type="text"
             className="form-control"
-            name="address"
-            value={formData.address || ""}
+            name="distributorAddress"
+            value={formData.distributorAddress || ""}
             onChange={handleChange}
           />
         </div>

@@ -110,10 +110,10 @@ const MedicineDetails = () => {
                 <strong>Distributor:</strong> {medicine.distributorName}
               </p>
               <p>
-                <strong>Contact:</strong> {medicine.contact_Number}
+                <strong>Contact:</strong> {medicine.distributorContact}
               </p>
               <p>
-                <strong>Address:</strong> {medicine.address}
+                <strong>Address:</strong> {medicine.distributorAddress}
               </p>
             </div>
           </div>
